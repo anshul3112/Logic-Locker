@@ -2,10 +2,6 @@
 
 Logic-Locker is a full-stack web application designed as a secure, personal library for developers to manage and reuse code snippets. It integrates an AI-powered summarization feature to provide quick insights into your code.
 
-
-
-**Live Demo:** [your-live-app-url.vercel.app](https://your-live-app-url.vercel.app)
-
 ---
 
 ## Features
