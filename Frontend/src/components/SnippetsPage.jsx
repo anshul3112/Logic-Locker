@@ -16,7 +16,7 @@ const SnippetsPage = () => {
   useEffect(() => {
     const fetchSnippets = async () => {
       try {
-        const response = await fetch('/api/v1/users/get-all-snippets', {
+        const response = await fetch('https://logic-locker.onrender.com/api/v1/users/get-all-snippets', {
           method: "POST",
           credentials: 'include', 
         });
@@ -37,7 +37,7 @@ const SnippetsPage = () => {
 
   const handleLogout = async () => {
     try {
-      await fetch('/api/v1/users/logout', { method: 'POST', credentials: 'include' });
+      await fetch('https://logic-locker.onrender.com/api/v1/users/logout', { method: 'POST', credentials: 'include' });
     } catch (error) {
       console.error('Logout failed:', error);
     } finally {

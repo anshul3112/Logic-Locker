@@ -21,7 +21,7 @@ const NewSnippetPage = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/v1/snippets/create', {
+      const response = await fetch('https://logic-locker.onrender.com/api/v1/snippets/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

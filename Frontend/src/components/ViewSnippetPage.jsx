@@ -19,7 +19,7 @@ const ViewSnippetPage = () => {
   useEffect(() => {
     const fetchSnippet = async () => {
       try {
-        const response = await fetch(`/api/v1/snippets/${snippetId}`, {
+        const response = await fetch(`https://logic-locker.onrender.com/api/v1/snippets/${snippetId}`, {
           method: 'POST', 
           credentials: 'include',
         });
@@ -41,7 +41,7 @@ const ViewSnippetPage = () => {
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this snippet?')) {
       try {
-        const response = await fetch(`/api/v1/snippets/delete/${snippetId}`, {
+        const response = await fetch(`https://logic-locker.onrender.com/api/v1/snippets/delete/${snippetId}`, {
           method: 'DELETE',
           credentials: 'include',
         });
@@ -57,7 +57,7 @@ const ViewSnippetPage = () => {
 
   const handleUpdate = async () => {
     try {
-      const response = await fetch(`/api/v1/snippets/update/${snippetId}`, {
+      const response = await fetch(`https://logic-locker.onrender.com/api/v1/snippets/update/${snippetId}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -78,7 +78,7 @@ const ViewSnippetPage = () => {
     setIsSummarizing(true);
     setSummary('');
     try {
-      const response = await fetch("/api/v1/summarize", {
+      const response = await fetch("https://logic-locker.onrender.com/api/v1/summarize", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: 'include',
