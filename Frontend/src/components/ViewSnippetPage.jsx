@@ -5,16 +5,13 @@ const ViewSnippetPage = () => {
   const { id: snippetId } = useParams(); // Get snippet ID from URL
   const navigate = useNavigate();
 
-  // State for the snippet data
   const [snippet, setSnippet] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  // State for editing
   const [isEditing, setIsEditing] = useState(false);
   const [editedCode, setEditedCode] = useState('');
 
-  // State for the summary feature
   const [summary, setSummary] = useState('');
   const [isSummarizing, setIsSummarizing] = useState(false);
 
@@ -23,7 +20,7 @@ const ViewSnippetPage = () => {
     const fetchSnippet = async () => {
       try {
         const response = await fetch(`/api/v1/snippets/${snippetId}`, {
-          method: 'POST', // Changed from GET to POST to match your API structure
+          method: 'POST', 
           credentials: 'include',
         });
         if (!response.ok) {
@@ -31,7 +28,7 @@ const ViewSnippetPage = () => {
         }
         const result = await response.json();
         setSnippet(result.data);
-        setEditedCode(result.data.code); // Initialize editedCode with fetched code
+        setEditedCode(result.data.code); 
       } catch (err) {
         setError(err.message);
       } finally {
@@ -41,7 +38,6 @@ const ViewSnippetPage = () => {
     fetchSnippet();
   }, [snippetId]);
 
-  // Handle snippet deletion
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this snippet?')) {
       try {
@@ -52,14 +48,13 @@ const ViewSnippetPage = () => {
         if (!response.ok) {
           throw new Error('Failed to delete snippet.');
         }
-        navigate('/snippets'); // Go back to the list on success
+        navigate('/snippets'); 
       } catch (err) {
         setError(err.message);
       }
     }
   };
 
-  // Handle snippet update
   const handleUpdate = async () => {
     try {
       const response = await fetch(`/api/v1/snippets/update/${snippetId}`, {
@@ -72,14 +67,13 @@ const ViewSnippetPage = () => {
         throw new Error('Failed to update snippet.');
       }
       const result = await response.json();
-      setSnippet(result.data); // Update local state with the updated snippet
-      setIsEditing(false); // Exit editing mode
+      setSnippet(result.data); 
+      setIsEditing(false); 
     } catch (err) {
       setError(err.message);
     }
   };
 
-  // Handle code summarization
   const handleSummarize = async () => {
     setIsSummarizing(true);
     setSummary('');
@@ -94,7 +88,7 @@ const ViewSnippetPage = () => {
         throw new Error('Failed to get summary.');
       }
       const result = await response.json();
-      setSummary(result.data.summary); // Assuming the API returns { data: { summary: '...' } }
+      setSummary(result.data.summary); 
     // eslint-disable-next-line no-unused-vars
     } catch (err) {
       setSummary('Error: Could not generate summary.');

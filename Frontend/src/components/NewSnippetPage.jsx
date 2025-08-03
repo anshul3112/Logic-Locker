@@ -2,26 +2,25 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const NewSnippetPage = () => {
-  // State for form fields
+ 
   const [title, setTitle] = useState('');
   const [language, setLanguage] = useState('');
   const [code, setCode] = useState('');
 
-  // State for loading and error messages
+
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Hook for navigation
+
   const navigate = useNavigate();
 
-  // Handle form submission
+
   const handleCreateSnippet = async (e) => {
     e.preventDefault();
     setError('');
     setLoading(true);
 
     try {
-      // API call to your backend create endpoint
       const response = await fetch('/api/v1/snippets/create', {
         method: 'POST',
         headers: {
@@ -32,7 +31,6 @@ const NewSnippetPage = () => {
       });
 
       if (response.ok) {
-        // On success, navigate back to the main snippets page
         navigate('/snippets');
       } else {
         const errorData = await response.json();
@@ -46,7 +44,6 @@ const NewSnippetPage = () => {
   };
 
   return (
-    // Main container with a blue-violet gradient background
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-violet-200 p-4">
       {/* Form card */}
       <div className="w-full max-w-2xl bg-white rounded-xl shadow-lg p-8">
@@ -54,9 +51,7 @@ const NewSnippetPage = () => {
           Create a New Snippet
         </h2>
 
-        {/* Create Snippet Form */}
         <form onSubmit={handleCreateSnippet}>
-          {/* Title Field */}
           <div className="mb-4">
             <label
               htmlFor="title"
@@ -75,7 +70,6 @@ const NewSnippetPage = () => {
             />
           </div>
 
-          {/* Language Field */}
           <div className="mb-4">
             <label
               htmlFor="language"
@@ -94,7 +88,6 @@ const NewSnippetPage = () => {
             />
           </div>
 
-          {/* Code Field */}
           <div className="mb-6">
             <label
               htmlFor="code"
@@ -113,12 +106,10 @@ const NewSnippetPage = () => {
             />
           </div>
 
-          {/* Error Message Display */}
           {error && (
             <p className="text-red-500 text-sm text-center mb-4">{error}</p>
           )}
 
-          {/* Action Buttons */}
           <div className="flex justify-end gap-4">
             <button
               type="button"

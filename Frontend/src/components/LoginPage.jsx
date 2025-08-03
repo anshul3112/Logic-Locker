@@ -14,9 +14,9 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // Prevent page refresh
-    setError(''); // Clear previous errors
-    setLoading(true); // Show loading indicator
+    e.preventDefault(); 
+    setError(''); 
+    setLoading(true); 
 
     try {
 
