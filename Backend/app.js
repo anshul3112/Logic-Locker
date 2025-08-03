@@ -10,13 +10,7 @@ const app = express();
 const allowedOrigins = process.env.CORS_ORIGIN.split(",");
 
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: [process.env.CORS_ORIGIN, "http://localhost:5173"], // or 3000 based on Vite config
   credentials: true,
 }));
 
